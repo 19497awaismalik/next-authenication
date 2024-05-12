@@ -1,0 +1,22 @@
+# .github/workflows/example.yml
+
+name: Example Workflow
+
+on: [push]
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+
+    env: # Use the environment variables defined in default-env.yml
+     NEXT_GITHUB_CLIENT_ID: ${{ secret.NEXT_GITHUB_CLIENT_ID}}
+      NEXT_GITHUB_CLIENT_SECRET: ${{secret.NEXT_GITHUB_CLIENT_SECRET }}
+      NEXT_GOOGLE_CLIENT_ID: ${{ secret.NEXT_GOOGLE_CLIENT_ID }}
+      NEXT_GOOGLE_CLIENT_SECRET: ${{ secret.NEXT_GOOGLE_CLIENT_SECRET }}
+
+    steps:
+      - name: Display Default Environment Variables
+        run: |
+          echo "Default Username: $DEFAULT_USERNAME"
+          echo "Default Email: $DEFAULT_EMAIL"
+          echo "Default Token: $DEFAULT_TOKEN"
